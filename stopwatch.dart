@@ -32,24 +32,28 @@ class Explanation {
   }
 }
 
-void handleKeyInput(Stopwatch stopwatch) {
-  stdin.listen((List<int> data) {
-    final key = String.fromCharCodes(data).trim();
-    final explanation = Explanation();
-    switch (key) {
-      case 's':
-        if (stopwatch._startTime == null) {
-          stopwatch.start();
-          explanation.start();
-        } else {
-          stopwatch.stop();
-          explanation.stop(stopwatch);
-        }
-        break;
-      case 'q':
-        exit(0);
-    }
-  });
+class handleKeyInput {
+
+  void _handleKeyInput(Stopwatch stopwatch) {
+    stdin.listen((List<int> data) {
+      final key = String.fromCharCodes(data).trim();
+      final explanation = Explanation();
+      switch (key) {
+        case 's':
+          if (stopwatch._startTime == null) {
+            stopwatch.start();
+            explanation.start();
+          } else {
+            stopwatch.stop();
+            explanation.stop(stopwatch);
+          }
+          break;
+        case 'q':
+          exit(0);
+      }
+    });
+  }
+  
 }
 
 void main() {
@@ -57,5 +61,5 @@ void main() {
   final explanation = Explanation();
 
   explanation.introduction();
-  handleKeyInput(stopwatch);
+  handleKeyInput()._handleKeyInput(stopwatch);
 }
